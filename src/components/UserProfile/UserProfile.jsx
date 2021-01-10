@@ -2,7 +2,6 @@ import React from 'react';
 import style from './UserProfile.module.css';
 import NavBar from '../NavBar';
 import PublicationInput from '../PublicationInput';
-import PublicationsList from '../PublicationsList';
 
 export default function UserProfile() {
   return (
@@ -21,7 +20,6 @@ export default function UserProfile() {
           </div>
         </div>
         <PublicationInput />
-        <PublicationsList />
       </section>
     </div>
   );
