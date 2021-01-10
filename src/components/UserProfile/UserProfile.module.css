@@ -1,0 +1,11 @@
+.UserBlock{
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.userInfo{
+    display: flex;
+}
+.userInfo img{
+    width: 50%;
+}
