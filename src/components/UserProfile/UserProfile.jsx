@@ -1,12 +1,9 @@
 import React from 'react';
 import style from './UserProfile.module.css';
-import NavBar from '../NavBar';
-import PublicationInput from '../PublicationInput';
+import PublicationInput from './PublicationInput';
 
 export default function UserProfile() {
   return (
-    <div className={style.UserBlock}>
-      <NavBar />
       <section className={style.UserProfile}>
         <div className={style.userInfo}>
           <img
@@ -21,6 +18,5 @@ export default function UserProfile() {
         </div>
         <PublicationInput />
       </section>
-    </div>
   );
 }

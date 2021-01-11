@@ -2,3 +2,6 @@
     background-color: brown;
     padding: 0 3rem;
 }
+.active{
+    color: cadetblue;
+}
