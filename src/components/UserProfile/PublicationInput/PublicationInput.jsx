@@ -19,7 +19,6 @@ export default function PublicationInput() {
       };
       setList((list) => [obj, ...list]);
       setId((idd) => idd + 1);
-      // setCount((count) => "");
     }
   };
 

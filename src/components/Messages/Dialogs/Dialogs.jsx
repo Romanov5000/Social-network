@@ -1,8 +1,9 @@
 import React from "react";
 import style from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default function Dialogs(props) {
+const Dialogs = (props) => {
   const { dialogNameList } = props;
 
   let messageList = dialogNameList.map((item) => {
@@ -12,9 +13,12 @@ export default function Dialogs(props) {
       </div>
     );
   });
-  return (
-    <div className={style.dialogs}>
-      {messageList}
-    </div>
-  );
-}
+  return <div className={style.dialogs}>{messageList}</div>;
+};
+const mapStateToProps = (state) => {
+  return {
+    dialogNameList: state.dialogNameList,
+  };
+};
+
+export default connect(mapStateToProps)(Dialogs);
