@@ -19,14 +19,21 @@ export default function PublicationInput() {
       };
       setList((list) => [obj, ...list]);
       setId((idd) => idd + 1);
-      setCount((count) => "");
+      // setCount((count) => "");
     }
   };
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setCount((count) => "");
+  }
+
   return (
     <div className={style.PublicationInput}>
-      <input value={count} onChange={inputText} />
-      <button onClick={addPublication}>klick</button>
+      <form onSubmit={onSubmit}>
+        <input value={count} onChange={inputText} />
+        <button onClick={addPublication}>klick</button>
+      </form>
       <PublicationsList list={list} />
     </div>
   );
