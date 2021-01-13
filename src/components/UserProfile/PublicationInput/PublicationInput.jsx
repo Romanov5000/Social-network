@@ -2,37 +2,27 @@ import React, { useState } from "react";
 import style from "./PublicationInput.module.css";
 import PublicationsList from "../PublicationsList";
 import { connect } from "react-redux";
+import { a } from "../../../actions/actionNewPost";
 
 const PublicationInput = (props) => {
-  const [count, setCount] = useState("");
-  const [idd, setId] = useState(0);
+  const [newPost, setnewPost] = useState("");
 
-  const { setPublication } = props;
   const inputText = (event) => {
-    setCount((count) => event.target.value);
-  };
-
-  const addPublication = (event) => {
-    if (count !== "") {
-      const post = {
-        text: count,
-        id: idd,
-      };
-      setId((idd) => idd + 1);
-      setPublication(post);
+    if (event.target.value !== "") {
+      setnewPost((newPost) => event.target.value);
     }
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setCount((count) => "");
+    setnewPost((newPost) => "");
   };
 
   return (
     <div className={style.PublicationInput}>
       <form onSubmit={onSubmit}>
-        <input value={count} onChange={inputText} />
-        <button onClick={addPublication}>klick</button>
+        <input value={newPost} onChange={inputText} />
+        <button onClick={() => props.setPublication(newPost)}>klick</button>
       </form>
       <PublicationsList />
     </div>
@@ -40,11 +30,7 @@ const PublicationInput = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setPublication: (post) =>
-    dispatch({
-      type: "IS_PUBLICATIONS",
-      payload: post,
-    }),
+  setPublication: (newPost) => dispatch(a(newPost)),
 });
 
 export default connect(null, mapDispatchToProps)(PublicationInput);

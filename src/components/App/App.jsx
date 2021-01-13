@@ -6,6 +6,7 @@ import NavBar from "../NavBar";
 import Messages from "../Messages";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
+
 function App() {
   return (
     <BrowserRouter>
