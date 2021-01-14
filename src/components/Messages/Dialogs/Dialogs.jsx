@@ -13,7 +13,8 @@ const Dialogs = (props) => {
       </div>
     );
   });
-  return <div className={style.dialogs}>{messageList}</div>;
+  return (
+  <div className={style.dialogs}>{messageList}</div>)
 };
 const mapStateToProps = (state) => {
   return {

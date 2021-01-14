@@ -1,4 +1,4 @@
-export const a = (newPost) => {
+export const actionNewPost = (newPost) => {
     const post = {
         text: newPost,
         id: Date.now(),
@@ -6,7 +6,7 @@ export const a = (newPost) => {
 
     return function (dispatch) {
         dispatch({
-            type: "IS_PUBLICATIONS",
+            type: 'IS_PUBLICATIONS',
             payload: post,
         })
     }

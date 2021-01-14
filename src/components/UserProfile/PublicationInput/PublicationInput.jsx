@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import style from "./PublicationInput.module.css";
 import PublicationsList from "../PublicationsList";
 import { connect } from "react-redux";
-import { a } from "../../../actions/actionNewPost";
+import { actionNewPost } from "../../../actions/actionNewPost";
 
 const PublicationInput = (props) => {
-  const [newPost, setnewPost] = useState("");
+  const [newPost, setNewPost] = useState("");
 
   const inputText = (event) => {
     if (event.target.value !== "") {
-      setnewPost((newPost) => event.target.value);
+      setNewPost((newPost) => event.target.value);
     }
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setnewPost((newPost) => "");
+    setNewPost((newPost) => "");
   };
 
   return (
@@ -30,7 +30,7 @@ const PublicationInput = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  setPublication: (newPost) => dispatch(a(newPost)),
+  setPublication: (newPost) => dispatch(actionNewPost(newPost)),
 });
 
 export default connect(null, mapDispatchToProps)(PublicationInput);

@@ -9,12 +9,8 @@ const initialState = {
         { name: 'Julia', id: 3 },
         { name: 'Tania', id: 4 },
     ],
-    dialogMessagesList: [
-        {text: 'pi', id:1},
-        {text: 'do', id:2},
-        {text: 'r', id:3},
-    ],
-    publications:[],
+    dialogMessagesList: [],
+    publications: [],
 }
 
 function MainReducer(state = initialState, action) {
@@ -22,8 +18,13 @@ function MainReducer(state = initialState, action) {
         case 'IS_PUBLICATIONS':
             return {
                 ...state,
-                publications: [action.payload,...state.publications]
+                publications: [action.payload, ...state.publications]
             };
+        case 'IS_MESSAEGS':
+            return {
+                ...state,
+                dialogMessagesList: [...state.dialogMessagesList, action.payload]
+            }
         default:
             return state;
     }
