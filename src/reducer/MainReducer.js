@@ -11,6 +11,10 @@ const initialState = {
     ],
     dialogMessagesList: [],
     publications: [],
+    users: [
+        { name: 'vl', id: 1, follow: false },
+        { name: 'lv', id: 2, follow: true }
+    ],
 }
 
 function MainReducer(state = initialState, action) {
@@ -24,6 +28,11 @@ function MainReducer(state = initialState, action) {
             return {
                 ...state,
                 dialogMessagesList: [...state.dialogMessagesList, action.payload]
+            }
+        case 'IS_USERS_FOLLOW':
+            return {
+                ...state,
+                users: state.users.map(item => item.id === action.payload ? { ...item, follow: !item.follow } : item)
             }
         default:
             return state;

@@ -24,13 +24,17 @@ const PublicationInput = (props) => {
         <input value={newPost} onChange={inputText} />
         <button onClick={() => props.setPublication(newPost)}>klick</button>
       </form>
-      <PublicationsList />
+      <PublicationsList publications={props.publications} />
     </div>
   );
 };
-
+const mapStateToProps = (state) => {
+  return {
+    publications: state.publications,
+  };
+};
 const mapDispatchToProps = (dispatch) => ({
   setPublication: (newPost) => dispatch(actionNewPost(newPost)),
 });
 
-export default connect(null, mapDispatchToProps)(PublicationInput);
+export default connect(mapStateToProps, mapDispatchToProps)(PublicationInput);

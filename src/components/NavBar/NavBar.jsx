@@ -8,7 +8,7 @@ export default function NavBar(props) {
   return (
     <section className={style.NavBar}>
       <NavLink to="/Profile" activeClassName={style.active}>
-      <li> Profile</li>
+      <li>Profile</li>
       </NavLink>
       <NavLink to="/Messages" activeClassName={style.active}>
       <li>Messages</li>
@@ -18,6 +18,9 @@ export default function NavBar(props) {
       </NavLink>
       <NavLink to="/Music" activeClassName={style.active}>
       <li>Music</li>
+      </NavLink>
+      <NavLink to="/FindUser" activeClassName={style.active}>
+      <li>FindUser</li>
       </NavLink>
       <NavLink to="/Settings" activeClassName={style.active}>
       <li>Settings</li>
