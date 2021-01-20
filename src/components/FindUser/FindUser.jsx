@@ -3,7 +3,9 @@ import style from "./FindUser.module.css";
 import { connect } from "react-redux";
 import User from "./User";
 import { setUsersAction } from "../../actions/setUsersAction";
-import {AddOrDeleteUser} from "../../actions/actionAddOrDeleteUser";
+import { AddOrDeleteUser } from "../../actions/actionAddOrDeleteUser";
+import Paginator from "../Paginator";
+
 
 const FindUser = (props) => {
   const { users, setFollow, setUsers } = props;
@@ -26,7 +28,12 @@ const FindUser = (props) => {
     );
   });
 
-  return <ul>{usersList}</ul>;
+  return (
+    <div>
+      <ul>{usersList}</ul>
+      <Paginator onPaginatorPage={setUsersAction} />
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => {

@@ -12,12 +12,7 @@ const initialState = {
     dialogMessagesList: [],
     publications: [],
     users: [],
-    paginator:{
-        nextPageUrl:null,
-        prevPageUrl:null,
-        pageCount:null,
-        currentPage:null,
-    }
+    paginator:null,
 }
 
 function MainReducer(state = initialState, action) {
@@ -35,7 +30,8 @@ function MainReducer(state = initialState, action) {
         case 'IS_USERS':
             return {
                 ...state,
-                users: action.payload,
+                users: action.payload.responseUsersArr,
+                paginator:action.payload.paginator.pageNumber,
             }
         case 'IS_USERS_FOLLOW':
             return {

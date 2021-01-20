@@ -2,38 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 
 const Paginator = (props) => {
-    const {
-        nextPageUrl,
-        prevPageUrl,
-        currentPage,
-        getNextPage,
-        getPrevPage,
-    } = props;
+  const { currentPage, getPage } = props;
 
-    return (
-        <div>
-            {prevPageUrl && (
-                <button onClick={() => getPrevPage(prevPageUrl)}>Prev List</button>
-            )}
-            <span>{currentPage}</span>
-            {nextPageUrl && (
-                <button onClick={() => getNextPage(nextPageUrl)}>Next List</button>
-            )}
-        </div>
-    );
+  let prevPage = currentPage > 1 ? currentPage - 1 : currentPage;
+  let nextPage = currentPage + 1;
+
+  return (
+    <div>
+      <button onClick={() => getPage(prevPage)}>Prev List</button>
+
+      <span>{currentPage}</span>
+
+      <button onClick={() => getPage(nextPage)}>Next List</button>
+    </div>
+  );
 };
 
-
 const mapStateToProps = (state) => ({
-    nextPageUrl: state.paginator.nextPageUrl,
-    prevPageUrl: state.paginator.prevPageUrl,
-    pageCount: state.paginator.pageCount,
-    currentPage: state.paginator.currentPage,
+  currentPage: state.paginator,
 });
 
 const mapDispatchToProps = (dispatch, props) => ({
-    getNextPage: (nextPageUrl) => dispatch(props.onPaginatorPage(nextPageUrl)),
-    getPrevPage: (prevPageUrl) => dispatch(props.onPaginatorPage(prevPageUrl)),
+  getPage: (pageNumber) => dispatch(props.onPaginatorPage(pageNumber)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Paginator);
