@@ -1,27 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./FindUser.module.css";
 import { connect } from "react-redux";
 import User from "./User";
+import { setUsersAction } from "../../actions/setUsersAction";
+import {AddOrDeleteUser} from "../../actions/actionAddOrDeleteUser";
 
 const FindUser = (props) => {
-const {users} = props;
+  const { users, setFollow, setUsers } = props;
 
-const usersList = users.map((item) => {
+  useEffect(() => {
+    setUsers();
+  }, []);
+
+  const usersList = users.map((item) => {
     return (
-        <li key={item.id}>
-            < User
-            name = {item.name}
-            id = {item.id}
-            follow = {item.follow}
-            />
-        </li>
-    )
-})
+      <li key={item.id}>
+        <User
+          name={item.name}
+          id={item.id}
+          follow={item.follow}
+          photos={item.photos}
+          setFollow={setFollow}
+        />
+      </li>
+    );
+  });
 
-
-  return (
-      <ul>{usersList}</ul>
-  );
+  return <ul>{usersList}</ul>;
 };
 
 const mapStateToProps = (state) => {
@@ -30,4 +35,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(FindUser);
+const mapDispatchToProps = (dispatch) => ({
+  setUsers: () => dispatch(setUsersAction()),
+  setFollow: (id) => dispatch(AddOrDeleteUser(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FindUser);

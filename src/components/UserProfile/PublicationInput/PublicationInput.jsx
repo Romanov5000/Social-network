@@ -3,28 +3,15 @@ import style from "./PublicationInput.module.css";
 import PublicationsList from "../PublicationsList";
 import { connect } from "react-redux";
 import { actionNewPost } from "../../../actions/actionNewPost";
+import InputForm from '../../InputForm';
 
 const PublicationInput = (props) => {
-  const [newPost, setNewPost] = useState("");
-
-  const inputText = (event) => {
-    if (event.target.value !== "") {
-      setNewPost((newPost) => event.target.value);
-    }
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    setNewPost((newPost) => "");
-  };
+  const {setPublication, publications} = props;
 
   return (
     <div className={style.PublicationInput}>
-      <form onSubmit={onSubmit}>
-        <input value={newPost} onChange={inputText} />
-        <button onClick={() => props.setPublication(newPost)}>klick</button>
-      </form>
-      <PublicationsList publications={props.publications} />
+      <InputForm setPublication={setPublication} />
+      <PublicationsList publications={publications} />
     </div>
   );
 };
