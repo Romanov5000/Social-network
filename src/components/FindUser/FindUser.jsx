@@ -5,15 +5,18 @@ import User from "./User";
 import { setUsersAction } from "../../actions/setUsersAction";
 import { AddOrDeleteUser } from "../../actions/actionAddOrDeleteUser";
 import Paginator from "../Paginator";
-
+import Spinner from "../Spinner";
 
 const FindUser = (props) => {
-  const { users, setFollow, setUsers } = props;
+  const { users, AddOrDeleteUser } = props;
 
   useEffect(() => {
-    setUsers();
+    props.setUsersAction();
   }, []);
 
+  if (!users.length) {
+    return <Spinner />;
+  }
   const usersList = users.map((item) => {
     return (
       <li key={item.id}>
@@ -22,7 +25,7 @@ const FindUser = (props) => {
           id={item.id}
           follow={item.follow}
           photos={item.photos}
-          setFollow={setFollow}
+          AddOrDeleteUser={AddOrDeleteUser}
         />
       </li>
     );
@@ -42,9 +45,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  setUsers: () => dispatch(setUsersAction()),
-  setFollow: (id) => dispatch(AddOrDeleteUser(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(FindUser);
+export default connect(mapStateToProps, {
+  setUsersAction,
+  AddOrDeleteUser,
+})(FindUser);

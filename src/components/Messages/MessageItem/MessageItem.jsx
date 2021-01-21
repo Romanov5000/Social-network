@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { actionNewMessage } from "../../../actions/actionNewMessege";
 
 const MessageItem = (props) => {
-  const { dialogMessagesList, setPublication } = props;
+  const { dialogMessagesList, actionNewMessage } = props;
 
   const messages = dialogMessagesList.map((item) => (
     <div key={item.id}>{item.messageText}</div>
@@ -13,7 +13,7 @@ const MessageItem = (props) => {
   return (
     <div className={style.MessageItem}>
       {messages}
-      <InputForm setPublication={setPublication} />
+      <InputForm setPublication={actionNewMessage} />
     </div>
   );
 };
@@ -23,8 +23,5 @@ const mapStateToProps = (state) => {
     dialogMessagesList: state.dialogMessagesList,
   };
 };
-const mapDispatchToProps = (dispatch) => ({
-  setPublication: (message) => dispatch(actionNewMessage(message)),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageItem);
+export default connect(mapStateToProps, {actionNewMessage})(MessageItem);
