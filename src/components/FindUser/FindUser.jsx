@@ -3,12 +3,13 @@ import style from "./FindUser.module.css";
 import { connect } from "react-redux";
 import User from "./User";
 import { setUsersAction } from "../../actions/setUsersAction";
-import { AddOrDeleteUser } from "../../actions/actionAddOrDeleteUser";
 import Paginator from "../Paginator";
 import Spinner from "../Spinner";
+import { postUserFollow } from "../../actions/postUserFollow";
+import { deleteUserFollow } from "../../actions/deleteUserFollowAction";
 
 const FindUser = (props) => {
-  const { users, AddOrDeleteUser } = props;
+  const { users, postUserFollow, deleteUserFollow } = props;
 
   useEffect(() => {
     props.setUsersAction();
@@ -23,9 +24,10 @@ const FindUser = (props) => {
         <User
           name={item.name}
           id={item.id}
-          follow={item.follow}
+          follow={item.followed}
           photos={item.photos}
-          AddOrDeleteUser={AddOrDeleteUser}
+          postUserFollow={postUserFollow}
+          deleteUserFollow={deleteUserFollow}
         />
       </li>
     );
@@ -47,5 +49,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   setUsersAction,
-  AddOrDeleteUser,
+  postUserFollow,
+  deleteUserFollow,
 })(FindUser);

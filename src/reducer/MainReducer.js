@@ -12,7 +12,10 @@ const initialState = {
     dialogMessagesList: [],
     publications: [],
     users: [],
-    paginator:null,
+    paginator: null,
+    userInfo: [],
+    initial: [],
+    isAuth: false,
 }
 
 function MainReducer(state = initialState, action) {
@@ -31,12 +34,23 @@ function MainReducer(state = initialState, action) {
             return {
                 ...state,
                 users: action.payload.responseUsersArr,
-                paginator:action.payload.paginator.pageNumber,
+                paginator: action.payload.paginator.pageNumber,
             }
         case 'IS_USERS_FOLLOW':
             return {
                 ...state,
                 users: state.users.map(item => item.id === action.payload ? { ...item, follow: !item.follow } : item)
+            }
+        case 'IS_USER_INFO':
+            return {
+                ...state,
+                userInfo: action.payload
+            }
+        case 'IS_INITIAL':
+            return {
+                ...state,
+                initial: action.payload,
+                isAuth: true
             }
         default:
             return state;

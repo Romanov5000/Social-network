@@ -16,7 +16,7 @@ function App() {
         <div className={style.container}>
           <NavBar />
           <Switch>
-            <Route path="/profile">
+            <Route path={`/profile/:id?`}>
               <UserProfile />
             </Route>
             <Route path="/messages">
