@@ -8,10 +8,10 @@ import UserPage from "./UserPage";
 
 const UserProfile = (props) => {
   const { id } = useParams();
-
+const {setProfilePageAction, userProfileInfo} = props;
   useEffect(() => {
-    props.setProfilePageAction(id);
-  }, []);
+    setProfilePageAction(id);
+  }, [id]);
 
   let {
     fullName,
@@ -19,7 +19,7 @@ const UserProfile = (props) => {
     contacts,
     photos,
     aboutMe,
-  } = props.userProfileInfo;
+  } = userProfileInfo;
 
   return (
     <section className={style.UserProfile}>

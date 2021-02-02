@@ -39,7 +39,7 @@ function MainReducer(state = initialState, action) {
         case 'IS_USERS_FOLLOW':
             return {
                 ...state,
-                users: state.users.map(item => item.id === action.payload ? { ...item, follow: !item.follow } : item)
+                users: state.users.map(item => item.id === action.payload ? { ...item, followed: !item.followed } : item)
             }
         case 'IS_USER_INFO':
             return {

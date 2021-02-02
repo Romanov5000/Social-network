@@ -3,6 +3,7 @@ import Api from '../Api';
 const usersApi = new Api();
 
 export const setProfilePageAction = (id) => {
+
     return function (dispatch) {
 
         usersApi.getUserProfile(id)
