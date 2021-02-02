@@ -7,6 +7,7 @@ import Paginator from "../Paginator";
 import Spinner from "../Spinner";
 import { postUserFollow } from "../../actions/postUserFollow";
 import { deleteUserFollow } from "../../actions/deleteUserFollowAction";
+import { withAuthRedurect } from "../HOC/withAuthRedirect";
 
 const FindUser = (props) => {
   const { users, postUserFollow, deleteUserFollow } = props;
@@ -32,7 +33,7 @@ const FindUser = (props) => {
       </li>
     );
   });
-
+ 
   return (
     <div>
       <ul>{usersList}</ul>
@@ -47,8 +48,9 @@ const mapStateToProps = (state) => {
   };
 };
 
+let AuthRedirectComponent = withAuthRedurect(FindUser);
 export default connect(mapStateToProps, {
   setUsersAction,
   postUserFollow,
   deleteUserFollow,
-})(FindUser);
+})(AuthRedirectComponent);

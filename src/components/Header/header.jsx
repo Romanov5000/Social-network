@@ -18,10 +18,12 @@ const Header = (props) => {
 
   return (
     <header className={style.Header}>
+      <NavLink to={`/Profile/14286`}>
       <img
         src="https://cdn2.iconfinder.com/data/icons/random-set-1/467/Asset_79-512.png"
         alt="logo"
       />
+      </NavLink>
       <div>
         {checkUser}
       </div>

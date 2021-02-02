@@ -5,6 +5,7 @@ import style from "./App.module.css";
 import NavBar from "../NavBar";
 import Messages from "../Messages";
 import FindUser from "../FindUser";
+import Login from "../Login";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route path="/FindUser">
               <FindUser />
+            </Route>
+            <Route path="/Login">
+              <Login />
             </Route>
           </Switch>
         </div>

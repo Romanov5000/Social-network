@@ -1,10 +1,8 @@
 import React from "react";
 import style from "./MessageItem.module.css";
-import InputForm from '../../InputForm';
-import { connect } from "react-redux";
-import { actionNewMessage } from "../../../actions/actionNewMessege";
+import InputForm from "../../InputForm";
 
-const MessageItem = (props) => {
+export default function MessageItem(props) {
   const { dialogMessagesList, actionNewMessage } = props;
 
   const messages = dialogMessagesList.map((item) => (
@@ -16,12 +14,4 @@ const MessageItem = (props) => {
       <InputForm setPublication={actionNewMessage} />
     </div>
   );
-};
-
-const mapStateToProps = (state) => {
-  return {
-    dialogMessagesList: state.dialogMessagesList,
-  };
-};
-
-export default connect(mapStateToProps, {actionNewMessage})(MessageItem);
+}

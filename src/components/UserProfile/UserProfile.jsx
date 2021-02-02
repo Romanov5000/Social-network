@@ -5,10 +5,11 @@ import { connect } from "react-redux";
 import { setProfilePageAction } from "../../actions/setProfilePageAction";
 import { useParams } from "react-router-dom";
 import UserPage from "./UserPage";
+import { withAuthRedurect } from "../HOC/withAuthRedirect";
 
 const UserProfile = (props) => {
   const { id } = useParams();
-const {setProfilePageAction, userProfileInfo} = props;
+  const { setProfilePageAction, userProfileInfo } = props;
   useEffect(() => {
     setProfilePageAction(id);
   }, [id]);
@@ -39,4 +40,10 @@ const mapStateToProps = (state) => {
     userProfileInfo: state.userInfo,
   };
 };
-export default connect(mapStateToProps, { setProfilePageAction })(UserProfile);
+
+let AuthRedirectComponent = withAuthRedurect(UserProfile);
+
+const WithUrlDataComtainerComponent = withAuthRedurect(AuthRedirectComponent);
+export default connect(mapStateToProps, { setProfilePageAction })(
+  WithUrlDataComtainerComponent
+);

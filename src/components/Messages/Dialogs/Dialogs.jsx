@@ -1,9 +1,8 @@
 import React from "react";
 import style from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
 
-const Dialogs = (props) => {
+export default function Dialogs (props) {
   const { dialogNameList } = props;
 
   let messageList = dialogNameList.map((item) => {
@@ -16,10 +15,4 @@ const Dialogs = (props) => {
   return (
   <div className={style.dialogs}>{messageList}</div>)
 };
-const mapStateToProps = (state) => {
-  return {
-    dialogNameList: state.dialogNameList,
-  };
-};
 
-export default connect(mapStateToProps)(Dialogs);
