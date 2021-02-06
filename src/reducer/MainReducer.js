@@ -16,6 +16,7 @@ const initialState = {
     userInfo: [],
     initial: [],
     isAuth: false,
+    status: null,
 }
 
 function MainReducer(state = initialState, action) {
@@ -51,6 +52,11 @@ function MainReducer(state = initialState, action) {
                 ...state,
                 initial: action.payload,
                 isAuth: true
+            }
+        case 'IS_STATUS_INFO':
+            return {
+                ...state,
+                status: action.payload,
             }
         default:
             return state;

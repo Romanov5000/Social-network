@@ -5,6 +5,7 @@ import MessageItem from "./MessageItem";
 import { connect } from "react-redux";
 import { actionNewMessage } from "../../actions/actionNewMessege";
 import { withAuthRedurect } from "../HOC/withAuthRedirect";
+import { compose } from "redux";
 
 const Messages = (props) => {
   const { dialogNameList, dialogMessagesList, actionNewMessage } = props;
@@ -29,9 +30,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-let AuthRedirectComponent = withAuthRedurect(Messages);
-
-const WithUrlDataComtainerComponent = withAuthRedurect(AuthRedirectComponent);
-export default connect(mapStateToProps, { actionNewMessage })(
-  WithUrlDataComtainerComponent
-);
+export default compose(
+  connect(mapStateToProps, { actionNewMessage }),
+  withAuthRedurect
+)(Messages);

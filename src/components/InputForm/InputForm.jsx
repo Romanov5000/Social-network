@@ -18,7 +18,7 @@ export default function InputForm (props) {
     <div>
       <form onSubmit={onSubmit}>
         <input value={newPost} onChange={inputText} />
-        <button onClick={() => props.setPublication(newPost)}>klick</button>
+        <button onClick={() => props.setPublication(newPost)}>click</button>
       </form>
     </div>
   );

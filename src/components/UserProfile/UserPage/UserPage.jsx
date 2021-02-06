@@ -1,5 +1,6 @@
 import React from "react";
 import Spinner from "../../Spinner";
+import UserStatus from "../UserStatus";
 
 export default function UserPage(props) {
   let {
@@ -8,8 +9,9 @@ export default function UserPage(props) {
     contacts,
     photos,
     aboutMe,
+    userStatusInfo,
+    putStatusAction,
   } = props;
-
   let avatar = (photos && photos.large)
     ? photos.large
     : "https://cdn.iconscout.com/icon/free/png-512/speak-1659467-1409989.png";
@@ -40,6 +42,8 @@ export default function UserPage(props) {
         <img src={avatar} alt="userAvatar" />
         <p>{fullName}</p>
       </div>
+      <UserStatus text={userStatusInfo}
+      putStatusAction={putStatusAction}/>
       <div>
         <p>About me: {abtMe}</p>
         <p>Work status: {jobStatus}</p>

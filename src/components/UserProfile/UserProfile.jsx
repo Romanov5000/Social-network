@@ -6,12 +6,17 @@ import { setProfilePageAction } from "../../actions/setProfilePageAction";
 import { useParams } from "react-router-dom";
 import UserPage from "./UserPage";
 import { withAuthRedurect } from "../HOC/withAuthRedirect";
+import { setStatusAction, putStatusAction } from "../../actions/statusAction";
+import { compose } from "redux";
+
 
 const UserProfile = (props) => {
   const { id } = useParams();
-  const { setProfilePageAction, userProfileInfo } = props;
+  const { setProfilePageAction, userProfileInfo, setStatusAction, userStatusInfo, putStatusAction } = props;
+
   useEffect(() => {
     setProfilePageAction(id);
+    setStatusAction(id);
   }, [id]);
 
   let {
@@ -30,6 +35,8 @@ const UserProfile = (props) => {
         contacts={contacts}
         photos={photos}
         aboutMe={aboutMe}
+        userStatusInfo={userStatusInfo}
+        putStatusAction={putStatusAction}
       />
       <PublicationInput />
     </section>
@@ -38,12 +45,11 @@ const UserProfile = (props) => {
 const mapStateToProps = (state) => {
   return {
     userProfileInfo: state.userInfo,
+    userStatusInfo: state.status,
   };
 };
 
-let AuthRedirectComponent = withAuthRedurect(UserProfile);
-
-const WithUrlDataComtainerComponent = withAuthRedurect(AuthRedirectComponent);
-export default connect(mapStateToProps, { setProfilePageAction })(
-  WithUrlDataComtainerComponent
-);
+export default compose(
+  connect(mapStateToProps, { setProfilePageAction, setStatusAction, putStatusAction }),
+  withAuthRedurect
+)(UserProfile);

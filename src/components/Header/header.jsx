@@ -9,7 +9,6 @@ const Header = (props) => {
   useEffect(() => {
     props.setProfilePageAction();
   }, []);
-
   let checkUser = isAuth ? 
     initial.login : 
     <NavLink to="/Login">
@@ -36,4 +35,5 @@ const mapStateToProps = (state) => {
     isAuth: state.isAuth,
   };
 };
+
 export default connect(mapStateToProps, { setProfilePageAction })(Header);

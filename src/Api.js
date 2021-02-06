@@ -29,6 +29,17 @@ export default class Api {
         return result;
     }
 
+    getStatus = async (id) => {
+        const response = await this.instance.get(`profile/status/${id}`);
+        const result = response.data;
+        return result;
+    }
+    putStatus = async (status) => {
+        const response = await this.instance.put('profile/status', {status});
+        const result = response.data;
+        return result;
+    }
+
     postUserFollow = async (id) => {
         const response = await this.instance.post(`follow/${id}`);
         const result = response.data;
