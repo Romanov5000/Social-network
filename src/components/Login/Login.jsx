@@ -1,5 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { postUserLogin } from "../../actions/loginAction";
+import { useDispatch } from "react-redux";
 
 const Login = (props) => {
   return (
@@ -11,27 +13,27 @@ const Login = (props) => {
 };
 
 const UserSearchForm = () => {
-  const validateForm = (values: any) => {
+  const dispatch = useDispatch()
+  const validateForm = (values) => {
     const errors = {};
+
     return errors;
   };
 
-  const onSubmitForm = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+  const onSubmitForm = (values) => {
+    let { email, password, rememberMe } = values;
+    dispatch(postUserLogin(email, password, rememberMe));
   };
   return (
     <Formik
-      initialValues={{ email: "", password: "" }}
+      initialValues={{ email: "", password: "", rememberMe: false }}
       validate={validateForm}
       onSubmit={onSubmitForm}
     >
       {({ isSubmitting }) => (
         <Form>
           <div>
-            <Field type="login" name="login" />
+            <Field type="login" name="email" />
             <ErrorMessage name="email" component="div" />
             <Field type="password" name="password" />
             <ErrorMessage name="password" component="div" />
@@ -39,9 +41,7 @@ const UserSearchForm = () => {
             Remember me
             <ErrorMessage name="rememberMe" component="div" />
           </div>
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+          <button type="submit" disabled={isSubmitting}>Submit</button>
         </Form>
       )}
     </Formik>

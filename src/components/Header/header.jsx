@@ -3,6 +3,9 @@ import style from "./header.module.css";
 import { connect } from "react-redux";
 import { setProfilePageAction } from "../../actions/getInitialAction";
 import { NavLink } from "react-router-dom";
+import { withAuthRedurect } from "../HOC/withAuthRedirect";
+import { compose } from "redux";
+
 
 const Header = (props) => {
   const { initial, isAuth } = props;
