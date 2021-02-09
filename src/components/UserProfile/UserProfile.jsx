@@ -7,18 +7,12 @@ import { useParams } from "react-router-dom";
 import UserPage from "./UserPage";
 import { withAuthRedurect } from "../HOC/withAuthRedirect";
 import { setStatusAction, putStatusAction } from "../../actions/statusAction";
-import { Redirect } from 'react-router-dom';
+import { compose } from "redux";
+
 
 const UserProfile = (props) => {
   const { id } = useParams();
-  const {
-    setProfilePageAction,
-    userProfileInfo,
-    setStatusAction,
-    userStatusInfo,
-    putStatusAction,
-    isAuth,
-  } = props;
+  const { setProfilePageAction, userProfileInfo, setStatusAction, userStatusInfo, putStatusAction } = props;
 
   useEffect(() => {
     setProfilePageAction(id);
@@ -32,12 +26,6 @@ const UserProfile = (props) => {
     photos,
     aboutMe,
   } = userProfileInfo;
-
-  
-setTimeout(()=>{
-  if (!props.isAuth) return <Redirect to={'/Login'} />
-},2000)
-  
 
   return (
     <section className={style.UserProfile}>
@@ -58,12 +46,10 @@ const mapStateToProps = (state) => {
   return {
     userProfileInfo: state.userInfo,
     userStatusInfo: state.status,
-    isAuth: state.isAuth,
   };
 };
 
-export default connect(mapStateToProps, {
-  setProfilePageAction,
-  setStatusAction,
-  putStatusAction,
-})(UserProfile);
+export default compose(
+  connect(mapStateToProps, { setProfilePageAction, setStatusAction, putStatusAction }),
+  withAuthRedurect
+)(UserProfile);
