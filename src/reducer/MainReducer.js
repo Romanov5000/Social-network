@@ -53,11 +53,16 @@ function MainReducer(state = initialState, action) {
                 initial: action.payload,
                 isAuth: true
             }
-        // case 'IS_LOGIN':
-        //     return {
-        //         ...state,
-        //         isAuth: true
-        //     }
+        case 'IS_LOGIN':
+            return {
+                ...state,
+                isAuth: true
+            }
+        case 'IS_LOGOUT':
+            return {
+                ...state,
+                isAuth: false
+            }
         case 'IS_STATUS_INFO':
             return {
                 ...state,

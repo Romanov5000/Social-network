@@ -4,7 +4,7 @@ import Dialogs from "./Dialogs";
 import MessageItem from "./MessageItem";
 import { connect } from "react-redux";
 import { actionNewMessage } from "../../actions/actionNewMessege";
-import { withAuthRedurect } from "../HOC/withAuthRedirect";
+import PrivateRoute from "../HOC/PrivateRoute";
 import { compose } from "redux";
 
 const Messages = (props) => {
@@ -30,7 +30,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default compose(
-  connect(mapStateToProps, { actionNewMessage }),
-  withAuthRedurect
-)(Messages);
+export default connect(mapStateToProps, { actionNewMessage })(Messages);

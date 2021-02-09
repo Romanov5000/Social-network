@@ -11,9 +11,9 @@ export const postUserLogin = (email, password, rememberMe = false) => {
                 const responseUsersArr = data;
                 console.log(responseUsersArr);
                 if (responseUsersArr.resultCode === 0) {
-                    // dispatch({
-                    //     // type: 'IS_LOGIN'
-                    // })
+                    dispatch({
+                        type: 'IS_LOGIN'
+                    })
                 }
             })
 
@@ -21,18 +21,17 @@ export const postUserLogin = (email, password, rememberMe = false) => {
 }
 
 
-// export const deleteUserLogin = () => {
-//     return function (dispatch) {
+export const deleteUserLogin = () => {
+    return function (dispatch) {
 
-//         usersApi.deleteLogin()
-//             .then(async (data) => {
-//                 const responseUsersArr = data;
-//                 if (responseUsersArr.resultCode === 0) {
-//                     dispatch({
-//                         type: 'IS_USERS_FOLLOW',
-//                         payload: id,
-//                     })
-//                 }
-//             })
-//     }
-// }
+        usersApi.deleteLogin()
+            .then(async (data) => {
+                const responseUsersArr = data;
+                if (responseUsersArr.resultCode === 0) {
+                    dispatch({
+                        type: 'IS_LOGOUT'
+                    })
+                }
+            })
+    }
+}

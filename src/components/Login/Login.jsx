@@ -1,9 +1,13 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { postUserLogin } from "../../actions/loginAction";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from 'react-router-dom';
 
 const Login = (props) => {
+    const isAuth = useSelector(state => state.isAuth);
+
+    if(isAuth) return <Redirect to={'/News'} />
   return (
     <div>
       <h1>Login</h1>
@@ -13,7 +17,7 @@ const Login = (props) => {
 };
 
 const UserSearchForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const validateForm = (values) => {
     const errors = {};
 

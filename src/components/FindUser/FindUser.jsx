@@ -6,7 +6,7 @@ import { setUsersAction } from "../../actions/setUsersAction";
 import Paginator from "../Paginator";
 import Spinner from "../Spinner";
 import { postUserFollow, deleteUserFollow } from "../../actions/userFollow";
-import { withAuthRedurect } from "../HOC/withAuthRedirect";
+// import PrivateRoute from "../HOC/PrivateRoute";
 import { compose } from "redux";
 
 const FindUser = (props) => {
@@ -48,11 +48,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default compose(
-  connect(mapStateToProps, {
-    setUsersAction,
-    postUserFollow,
-    deleteUserFollow,
-  }),
-  withAuthRedurect
-)(FindUser);
+export default connect(mapStateToProps, {
+  setUsersAction,
+  postUserFollow,
+  deleteUserFollow,
+})(FindUser);

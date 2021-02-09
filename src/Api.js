@@ -33,11 +33,11 @@ export default class Api {
         const result = response.data;
         return result;
     }
-    // deleteLogin = async () => {
-    //     const response = await this.instance.delete('auth/login');
-    //     const result = response.data;
-    //     return result;
-    // }
+    deleteLogin = async () => {
+        const response = await this.instance.delete('auth/login');
+        const result = response.data;
+        return result;
+    }
 
     getStatus = async (id) => {
         const response = await this.instance.get(`profile/status/${id}`);
