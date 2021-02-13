@@ -8,7 +8,6 @@ export default function InputForm (props) {
       setNewPost((newPost) => event.target.value);
     }
   };
-
   const onSubmit = (event) => {
     event.preventDefault();
     setNewPost((newPost) => "");

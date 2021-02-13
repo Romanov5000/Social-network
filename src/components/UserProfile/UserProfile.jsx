@@ -1,27 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import style from "./UserProfile.module.css";
 import PublicationInput from "./PublicationInput";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setProfilePageAction } from "../../actions/setProfilePageAction";
 import { useParams } from "react-router-dom";
 import UserPage from "./UserPage";
-// import PrivateRoute from "../HOC/PrivateRoute";
 import { setStatusAction, putStatusAction } from "../../actions/statusAction";
-import { compose } from "redux";
 
-const UserProfile = (props) => {
+const UserProfile = () => {
   const { id } = useParams();
-  const {
-    setProfilePageAction,
-    userProfileInfo,
-    setStatusAction,
-    userStatusInfo,
-    putStatusAction,
-  } = props;
+  const userProfileInfo = useSelector((state)=>state.userInfo);
+  const userStatusInfo = useSelector((state)=>state.status);
+  const dispatch = useDispatch();
+
+  const incrementPutStatus = useCallback(
+    (status) => dispatch(putStatusAction(status)),
+    [dispatch]
+  )
 
   useEffect(() => {
-    setProfilePageAction(id);
-    setStatusAction(id);
+    dispatch(setProfilePageAction(id));
+    dispatch(setStatusAction(id));
   }, [id]);
 
   let {
@@ -41,21 +40,12 @@ const UserProfile = (props) => {
         photos={photos}
         aboutMe={aboutMe}
         userStatusInfo={userStatusInfo}
-        putStatusAction={putStatusAction}
+        putStatusAction={incrementPutStatus}
       />
       <PublicationInput />
     </section>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    userProfileInfo: state.userInfo,
-    userStatusInfo: state.status,
-  };
-};
 
-export default connect(mapStateToProps, {
-  setProfilePageAction,
-  setStatusAction,
-  putStatusAction,
-})(UserProfile);
+
+export default UserProfile;

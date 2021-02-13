@@ -2,12 +2,12 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { postUserLogin } from "../../actions/loginAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
-    const isAuth = useSelector(state => state.isAuth);
+  const isAuth = useSelector((state) => state.isAuth);
 
-    if(isAuth) return <Redirect to={'/News'} />
+  if (isAuth) return <Redirect to={"/News"} />;
   return (
     <div>
       <h1>Login</h1>
@@ -45,23 +45,13 @@ const UserSearchForm = () => {
             Remember me
             <ErrorMessage name="rememberMe" component="div" />
           </div>
-          <button type="submit" disabled={isSubmitting}>Submit</button>
+          <button type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
         </Form>
       )}
     </Formik>
   );
 };
-// const LoginForm = (props) => {
-//   return (
-//     <form >
-//       <div>
-//         <Field placeholder={"Login"} name={'login'} component={'input'}/>
-//         <Field placeholder={"password"} name={'password'} component={'input'}/>
-//         <Field type={"checkbox"} name={'rememberMe'} component={'input'}/> Remember me
-//       </div>
-//       <button>Log in</button>
-//     </form>
-//   );
-// };
 
 export default Login;

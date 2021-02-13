@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 import style from "./Messages.module.css";
 import Dialogs from "./Dialogs";
 import MessageItem from "./MessageItem";
-import { connect } from "react-redux";
-import { actionNewMessage } from "../../actions/actionNewMessege";
-import PrivateRoute from "../HOC/PrivateRoute";
-import { compose } from "redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const Messages = (props) => {
-  const { dialogNameList, dialogMessagesList, actionNewMessage } = props;
+import { actionNewMessage } from "../../actions/actionNewMessege";
+
+const Messages = () => {
+  const dialogMessagesList = useSelector((state) => state.dialogMessagesList);
+  const dialogNameList = useSelector((state) => state.dialogNameList);
+
+  
+const dispatch = useDispatch();
+const newMessegeCounter = useCallback(
+  (messege) => dispatch(actionNewMessage(messege)),
+  [dispatch])
+
 
   return (
     <section className={style.Messages}>
@@ -17,17 +24,11 @@ const Messages = (props) => {
       </div>
       <MessageItem
         dialogMessagesList={dialogMessagesList}
-        actionNewMessage={actionNewMessage}
+        actionNewMessage={newMessegeCounter}
       />
     </section>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    dialogNameList: state.dialogNameList,
-    dialogMessagesList: state.dialogMessagesList,
-  };
-};
 
-export default connect(mapStateToProps, { actionNewMessage })(Messages);
+export default Messages;

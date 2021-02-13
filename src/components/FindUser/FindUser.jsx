@@ -1,19 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import style from "./FindUser.module.css";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import User from "./User";
 import { setUsersAction } from "../../actions/setUsersAction";
 import Paginator from "../Paginator";
 import Spinner from "../Spinner";
 import { postUserFollow, deleteUserFollow } from "../../actions/userFollow";
-// import PrivateRoute from "../HOC/PrivateRoute";
-import { compose } from "redux";
 
-const FindUser = (props) => {
-  const { users, postUserFollow, deleteUserFollow } = props;
+
+const FindUser = () => {
+ 
+  const users = useSelector((state)=>state.users);
+  const dispatch = useDispatch();
+  const incrementPostFollow = useCallback(
+    (id) => dispatch(postUserFollow(id)),
+    [dispatch]
+  )
+  const incrementDeleteFollow = useCallback(
+    (id) => dispatch(deleteUserFollow(id)),
+    [dispatch]
+  )
 
   useEffect(() => {
-    props.setUsersAction();
+    dispatch(setUsersAction());
   }, []);
 
   if (!users.length) {
@@ -27,8 +36,8 @@ const FindUser = (props) => {
           id={item.id}
           follow={item.followed}
           photos={item.photos}
-          postUserFollow={postUserFollow}
-          deleteUserFollow={deleteUserFollow}
+          postUserFollow={incrementPostFollow}
+          deleteUserFollow={incrementDeleteFollow}
         />
       </li>
     );
@@ -42,14 +51,5 @@ const FindUser = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.users,
-  };
-};
 
-export default connect(mapStateToProps, {
-  setUsersAction,
-  postUserFollow,
-  deleteUserFollow,
-})(FindUser);
+export default FindUser;
