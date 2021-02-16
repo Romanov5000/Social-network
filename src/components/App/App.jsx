@@ -58,7 +58,7 @@ function App() {
             <PrivateRoute path={`/profile/:id?`} component={UserProfile}/>
             <PrivateRoute path={`/messages`} component={Messages}/>
             <PrivateRoute path={`/findUser`} component={FindUser}/>
-            <Route path="/Login" component={Login}/>
+            <Route path="" component={Login}/>
             </Switch>
         </div>
       </div>

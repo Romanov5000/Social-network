@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
 import style from "./header.module.css";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setProfilePageAction } from "../../actions/getInitialAction";
 import { NavLink } from "react-router-dom";
 import { deleteUserLogin } from "../../actions/loginAction";
 
-const Header = (props) => {
-  const { initial, isAuth } = props;
+const Header = () => {
+  
+  const initial = useSelector((state)=>state.initial);
+  const isAuth = useSelector((state)=>state.isAuth);
+  const dispatch = useDispatch();
+ 
   useEffect(() => {
-    props.setProfilePageAction();
+    dispatch(setProfilePageAction());
   }, []);
   let checkUser = isAuth ? (
     <div>
       <div>{initial.login}</div>
-      <button onClick={() => props.deleteUserLogin()}>logout</button>
+      <button onClick={() => dispatch(deleteUserLogin())}>logout</button>
     </div>
   ) : (
     <NavLink to="/Login">Login</NavLink>
@@ -31,14 +35,5 @@ const Header = (props) => {
     </header>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    initial: state.initial,
-    isAuth: state.isAuth,
-  };
-};
 
-export default connect(mapStateToProps, {
-  setProfilePageAction,
-  deleteUserLogin,
-})(Header);
+export default Header;

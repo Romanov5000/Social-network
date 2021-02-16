@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionNewPost } from "../../../actions/actionNewPost";
 import InputForm from "../../InputForm";
 
-const PublicationInput = () => {
+const PublicationInput = React.memo(() => {
   const publications = useSelector((state) => state.publications);
   const dispatch = useDispatch();
   const newPostCounter = useCallback((text) => dispatch(actionNewPost(text)), [
@@ -18,7 +18,7 @@ const PublicationInput = () => {
       <PublicationsList publications={publications} />
     </div>
   );
-};
+});
 
 
 export default PublicationInput;

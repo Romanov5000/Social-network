@@ -30,7 +30,7 @@ const UserProfile = () => {
     photos,
     aboutMe,
   } = userProfileInfo;
-
+  
   return (
     <section className={style.UserProfile}>
       <UserPage
