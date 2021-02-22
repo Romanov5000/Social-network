@@ -19,7 +19,7 @@ const initialState = {
     status: null,
 }
 
-function MainReducer(state = initialState, action) {
+export function MainReducer(state = initialState, action) {
     switch (action.type) {
         case 'IS_PUBLICATIONS':
             return {

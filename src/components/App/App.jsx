@@ -1,42 +1,3 @@
-// import React from "react";
-// import Header from "../Header";
-// import UserProfile from "../UserProfile";
-// import style from "./App.module.css";
-// import NavBar from "../NavBar";
-// import Messages from "../Messages";
-// import FindUser from "../FindUser";
-// import Login from "../Login";
-// import { Switch, Route, BrowserRouter } from "react-router-dom";
-
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <div className={style.App}>
-//         <Header />
-//         <div className={style.container}>
-//           <NavBar />
-//           <Switch>
-//             <Route path={`/profile/:id?`}>
-//               <UserProfile />
-//             </Route>
-//             <Route path="/messages">
-//               <Messages />
-//             </Route>
-//             <Route path="/FindUser">
-//               <FindUser />
-//             </Route>
-//             <Route path="/Login">
-//               <Login />
-//             </Route>
-//           </Switch>
-//         </div>
-//       </div>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default App;
 import React from "react";
 import Header from "../Header";
 import UserProfile from "../UserProfile";
@@ -47,22 +8,27 @@ import FindUser from "../FindUser";
 import PrivateRoute from "../HOC/PrivateRoute";
 import Login from "../Login";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../../reducer/MainReducer";
+
 function App() {
   return (
-    <BrowserRouter>
-      <div className={style.App}>
-        <Header />
-        <div className={style.container}>
-          <NavBar />
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className={style.App}>
+          <Header />
+          <div className={style.container}>
+            <NavBar />
             <Switch>
-            <PrivateRoute path={`/profile/:id?`} component={UserProfile}/>
-            <PrivateRoute path={`/messages`} component={Messages}/>
-            <PrivateRoute path={`/findUser`} component={FindUser}/>
-            <Route path="" component={Login}/>
+              <PrivateRoute path={`/profile/:id?`} component={UserProfile} />
+              <PrivateRoute path={`/messages`} component={Messages} />
+              <PrivateRoute path={`/findUser`} component={FindUser} />
+              <Route path="" component={Login} />
             </Switch>
+          </div>
         </div>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   );
 }
 export default App;
