@@ -18,9 +18,10 @@ const Login = (props) => {
 
 const UserSearchForm = () => {
   const dispatch = useDispatch();
-  const validateForm = (values) => {
+  const validateLogin = (values) => {
     const errors = {};
-
+    if (!values.email) errors.email = "Email is empty";
+    if (!values.password) errors.password = "Password is empty";
     return errors;
   };
 
@@ -31,8 +32,8 @@ const UserSearchForm = () => {
   return (
     <Formik
       initialValues={{ email: "", password: "", rememberMe: false }}
-      validate={validateForm}
       onSubmit={onSubmitForm}
+      validate={validateLogin}
     >
       {({ isSubmitting }) => (
         <Form>

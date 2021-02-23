@@ -4,34 +4,26 @@ const usersApi = new Api();
 
 export const setStatusAction = (id) => {
 
-    return function (dispatch) {
+    return async function (dispatch) {
 
-        usersApi.getStatus(id)
-            .then(async (data) => {
-                const responseStatusArr = data;
-
-                dispatch({
-                    type: 'IS_STATUS_INFO',
-                    payload: responseStatusArr
-                })
-            })
+        let data = await usersApi.getStatus(id);
+        dispatch({
+            type: 'IS_STATUS_INFO',
+            payload: data
+        })
     }
 }
 
 export const putStatusAction = (status) => {
-    
-    return function (dispatch) {
 
-        usersApi.putStatus(status)
-            .then(async (data) => {
-                const responseStatusArr = data;
-                if (responseStatusArr.resultCode === 0) {
+    return async function (dispatch) {
 
-                    dispatch({
-                        type: 'IS_STATUS_INFO',
-                        payload: responseStatusArr
-                    })
-                } 
+        let data = await usersApi.putStatus(status);
+        if (data.resultCode === 0) {
+            dispatch({
+                type: 'IS_STATUS_INFO',
+                payload: data
             })
+        }
     }
 }

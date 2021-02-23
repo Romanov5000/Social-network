@@ -1,37 +1,30 @@
 import Api from '../Api';
-import { Redirect } from 'react-router-dom';
+
 
 const usersApi = new Api();
 
 export const postUserLogin = (email, password, rememberMe = false) => {
 
-    return function (dispatch) {
-        usersApi.postLogin(email, password, rememberMe)
-            .then(async (data) => {
-                const responseUsersArr = data;
-                console.log(responseUsersArr);
-                if (responseUsersArr.resultCode === 0) {
-                    dispatch({
-                        type: 'IS_LOGIN'
-                    })
-                }
+    return async function (dispatch) {
+        let data = await usersApi.postLogin(email, password, rememberMe);
+        if (data.resultCode === 0) {
+            dispatch({
+                type: 'IS_LOGIN'
             })
-
+        }
     }
 }
 
 
 export const deleteUserLogin = () => {
-    return function (dispatch) {
+    return async function (dispatch) {
 
-        usersApi.deleteLogin()
-            .then(async (data) => {
-                const responseUsersArr = data;
-                if (responseUsersArr.resultCode === 0) {
-                    dispatch({
-                        type: 'IS_LOGOUT'
-                    })
-                }
+        let data = await usersApi.deleteLogin();
+        if (data.resultCode === 0) {
+            dispatch({
+                type: 'IS_LOGOUT'
             })
+        }
+
     }
 }
