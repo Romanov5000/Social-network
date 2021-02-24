@@ -6,12 +6,16 @@ import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
   const isAuth = useSelector((state) => state.isAuth);
+  const isAuthError = useSelector((state) => state.isAuthError);
+
+  let loginError = isAuthError? <div>Login or password is incorrect</div> : null;
 
   if (isAuth) return <Redirect to={"/News"} />;
   return (
     <div>
       <h1>Login</h1>
       <UserSearchForm />
+      {loginError}
     </div>
   );
 };
@@ -35,7 +39,7 @@ const UserSearchForm = () => {
       onSubmit={onSubmitForm}
       validate={validateLogin}
     >
-      {({ isSubmitting }) => (
+      {() => (
         <Form>
           <div>
             <Field type="login" name="email" />
@@ -46,7 +50,7 @@ const UserSearchForm = () => {
             Remember me
             <ErrorMessage name="rememberMe" component="div" />
           </div>
-          <button type="submit" disabled={isSubmitting}>
+          <button type="submit" >
             Submit
           </button>
         </Form>

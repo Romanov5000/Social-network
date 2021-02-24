@@ -16,6 +16,7 @@ const initialState = {
     userInfo: [],
     initial: [],
     isAuth: false,
+    isAuthError: false,
     status: null,
 }
 
@@ -56,7 +57,13 @@ export function MainReducer(state = initialState, action) {
         case 'IS_LOGIN':
             return {
                 ...state,
-                isAuth: true
+                isAuth: true,
+                isAuthError: false
+            }
+        case 'IS_LOGIN_ERROR':
+            return {
+                ...state,
+                isAuthError: true
             }
         case 'IS_LOGOUT':
             return {

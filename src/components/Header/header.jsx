@@ -13,7 +13,7 @@ const Header = () => {
  
   useEffect(() => {
     dispatch(setProfilePageAction());
-  }, []);
+  }, [isAuth]);
   let checkUser = isAuth ? (
     <div>
       <div>{initial.login}</div>

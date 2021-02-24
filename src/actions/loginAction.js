@@ -12,6 +12,11 @@ export const postUserLogin = (email, password, rememberMe = false) => {
                 type: 'IS_LOGIN'
             })
         }
+        if (data.resultCode === 1) {
+            dispatch({
+                type: 'IS_LOGIN_ERROR'
+            })
+        }
     }
 }
 
