@@ -13,3 +13,10 @@ export const setProfilePageAction = (id) => {
         })
     }
 }
+export const putProfilePhotoAction = (profilePhoto) => {
+
+    return async function (dispatch) {
+
+        let data = await usersApi.putProfilePhoto(profilePhoto);
+    }
+}

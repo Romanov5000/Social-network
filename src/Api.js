@@ -49,6 +49,14 @@ export default class Api {
         const result = response.data;
         return result;
     }
+    putProfilePhoto = async (profilePhoto) => {
+        const formData = new FormData();
+        formData.append('image',profilePhoto);
+        const response = await this.instance.put('profile/photo', formData, 
+        {headers:{ 'Content-Type':'multipart/form-data'}});
+        const result = response.data;
+        return result;
+    }
 
     postUserFollow = async (id) => {
         const response = await this.instance.post(`follow/${id}`);

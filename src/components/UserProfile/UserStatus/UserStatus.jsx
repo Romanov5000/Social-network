@@ -24,14 +24,9 @@ export default function UserStatus(props) {
       <form onSubmit={onSubmit}>
         <input
           autoFocus={true}
-          // onBlur={ubdateStatusForm}
           value={statusText}
           onChange={ubdateStatusText}
         />
-        {/* <button
-          onClick={() => props.putStatusAction(statusText)}>
-          click
-        </button> */}
       </form>
     </div>
   );
