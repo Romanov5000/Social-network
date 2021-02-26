@@ -30,11 +30,12 @@ const UserProfile = () => {
     (profilePhoto) => dispatch(putProfilePhotoAction(profilePhoto)),
     [dispatch]
   )
-
+  
   useEffect(() => {
     dispatch(setProfilePageAction(id));
     dispatch(setStatusAction(id));
-  }, [id, photos]);
+  }, [id]);
+
 
   
   let hereOwner = ownId==id? true : false;

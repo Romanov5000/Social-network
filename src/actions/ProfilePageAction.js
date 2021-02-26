@@ -18,5 +18,11 @@ export const putProfilePhotoAction = (profilePhoto) => {
     return async function (dispatch) {
 
         let data = await usersApi.putProfilePhoto(profilePhoto);
+        if (data.resultCode === 0) {
+            dispatch({
+                type: 'IS_NEW_USER_PHOTO',
+                payload: data.data.photos
+            })
+        }
     }
 }

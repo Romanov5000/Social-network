@@ -35,7 +35,7 @@ const UserPage = React.memo((props) => {
         <a href={contacts.instagram}>instagram</a>
       </div>
     ) : (
-      ""
+      "User doesn't have social networks"
     );
   const onProfilePhotChek = (e) => {
     if (e.target.files.length) {
@@ -54,7 +54,7 @@ const UserPage = React.memo((props) => {
         <p>{fullName}</p>
         {hereOwner && <input type="file" onChange={onProfilePhotChek} />}
       </div>
-      <UserStatus text={userStatusInfo} putStatusAction={putStatusAction} />
+      {hereOwner &&<UserStatus text={userStatusInfo} putStatusAction={putStatusAction} />}
       <div>
         <p>About me: {abtMe}</p>
         <p>Work status: {jobStatus}</p>
