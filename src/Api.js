@@ -49,6 +49,7 @@ export default class Api {
         const result = response.data;
         return result;
     }
+
     putProfilePhoto = async (profilePhoto) => {
         const formData = new FormData();
         formData.append('image',profilePhoto);

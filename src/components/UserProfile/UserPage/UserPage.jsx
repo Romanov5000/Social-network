@@ -29,10 +29,9 @@ const UserPage = React.memo((props) => {
   let SocNetBlock =
     contacts && contacts.github ? (
       <div>
-        <a href={contacts.facebook}>Facebook</a>
-        <a href={contacts.github}>github</a>
-        <a href={contacts.twitter}>twitter</a>
-        <a href={contacts.instagram}>instagram</a>
+        <a href={contacts.github} target="_blank">Github</a>
+        <a href={contacts.website} target="_blank">Portfolio</a>
+        <a href={contacts.mainLink} target="_blank">Linkedin</a>
       </div>
     ) : (
       "User doesn't have social networks"
@@ -54,7 +53,9 @@ const UserPage = React.memo((props) => {
         <p>{fullName}</p>
         {hereOwner && <input type="file" onChange={onProfilePhotChek} />}
       </div>
-      {hereOwner &&<UserStatus text={userStatusInfo} putStatusAction={putStatusAction} />}
+      {hereOwner && (
+        <UserStatus text={userStatusInfo} putStatusAction={putStatusAction} />
+      )}
       <div>
         <p>About me: {abtMe}</p>
         <p>Work status: {jobStatus}</p>

@@ -6,7 +6,7 @@ export default function UserStatus(props) {
   const [statusText, setStatusText] = useState(userStatusText);
 
   const ubdateStatusText = (event) => {
-      setStatusText((statusText) => event.target.value);
+    setStatusText((statusText) => event.target.value);
   };
   const ubdateStatusForm = (props) => {
     setStatusForm((statusForm) => !statusForm);
@@ -23,6 +23,7 @@ export default function UserStatus(props) {
     <div>
       <form onSubmit={onSubmit}>
         <input
+          onBlur={ubdateStatusForm}
           autoFocus={true}
           value={statusText}
           onChange={ubdateStatusText}
