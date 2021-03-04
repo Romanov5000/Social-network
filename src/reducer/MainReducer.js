@@ -14,6 +14,7 @@ const initialState = {
     users: [],
     paginator: null,
     userInfo: [],
+    ownersInfo: [],
     initial: [],
     isAuth: false,
     isAuthError: false,
@@ -48,6 +49,11 @@ export function MainReducer(state = initialState, action) {
                 ...state,
                 userInfo: action.payload
             }
+        case 'IS_OWNERS_INFO':
+            return {
+                ...state,
+                ownersInfo: action.payload
+            }
         case 'IS_INITIAL':
             return {
                 ...state,
@@ -78,8 +84,8 @@ export function MainReducer(state = initialState, action) {
         case 'IS_NEW_USER_PHOTO':
             return {
                 ...state,
-                userInfo: {...state.userInfo, photos: action.payload}
-
+                userInfo: {...state.userInfo, photos: action.payload},
+                ownersInfo: {...state.userInfo, photo: action.payload.small}
             }
         default:
             return state;

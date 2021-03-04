@@ -1,37 +1,39 @@
 import React, { useEffect } from "react";
 import style from "./header.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setProfilePageAction } from "../../actions/getInitialAction";
+import { setInitialPageAction } from "../../actions/getInitialAction";
+import { setMyOwnProfilePageAction } from "../../actions/ProfilePageAction";
 import { NavLink } from "react-router-dom";
 import { deleteUserLogin } from "../../actions/loginAction";
+import NavBar from "../NavBar";
 
 const Header = () => {
-  
-  const initial = useSelector((state)=>state.initial);
-  const isAuth = useSelector((state)=>state.isAuth);
+  const ownersInfo = useSelector((state) => state.ownersInfo);
+  const ownId = useSelector((state) => state.initial.id);
+  const isAuth = useSelector((state) => state.isAuth);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
-    dispatch(setProfilePageAction());
+    dispatch(setInitialPageAction());
+    if (ownId) dispatch(setMyOwnProfilePageAction(ownId));
   }, [isAuth]);
   let checkUser = isAuth ? (
-    <div>
-      <div>{initial.login}</div>
+    <div className={style.loginBtn}>
       <button onClick={() => dispatch(deleteUserLogin())}>logout</button>
     </div>
   ) : (
-    <NavLink to="/Login">Login</NavLink>
+    <NavLink to="/Login" ><button className={style.loginBtn}>Login</button></NavLink>
   );
-
   return (
     <header className={style.Header}>
-      <NavLink to={`/Profile/14286`}>
-        <img
-          src="https://cdn2.iconfinder.com/data/icons/random-set-1/467/Asset_79-512.png"
-          alt="logo"
-        />
-      </NavLink>
-      <div>{checkUser}</div>
+      {checkUser}
+      { isAuth && <NavLink to={`/Profile/${ownId}`}>
+        <div className={style.userBlk}>
+          <img src={ownersInfo.photo} />
+          <p>{ownersInfo.name}</p>
+        </div>
+      </NavLink>}
+      <NavBar />
     </header>
   );
 };

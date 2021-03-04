@@ -1,7 +1,12 @@
-.NavBar{
-    background-color: brown;
-    padding: 0 3rem;
+.NavBar li{
+    margin: 0 3rem 1.5rem;
+    color: #c3abef;
+    list-style-type: none;
+    transition: 0.7s;
 }
-.active{
-    color: cadetblue;
+.active li{
+    color: #fefeff;
 }
+.NavBar :hover {
+    color: #fefeff;
+  }

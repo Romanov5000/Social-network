@@ -1,9 +1,30 @@
 .Header {
-    background-color: aqua;
+  background-color: #8757df;
+  width: 20%;
 }
-.Header img{
-    width: 4%;
-    margin-left: 0.5rem;
-    margin-top: 0.2rem;
-    margin: 0.2rem 0 0.1rem 0.5rem;
+.Header img {
+  width: 30%;
+  border-radius: 10%;
+}
+.userBlk {
+  display: flex;
+  margin: 0 3rem 2rem;
+}
+.userBlk p {
+  width: 50%;
+  margin-left: 15px;
+  color: #c3abef;
+  transition: 0.7s;
+}
+.userBlk :active {
+  color: #fefe;
+}
+.userBlk :hover {
+  color: #e5dff7;
+}
+a {
+  text-decoration: none;
+}
+.loginBtn {
+  margin: 1rem 3rem 2rem;
 }

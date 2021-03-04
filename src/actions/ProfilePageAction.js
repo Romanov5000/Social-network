@@ -26,3 +26,17 @@ export const putProfilePhotoAction = (profilePhoto) => {
         }
     }
 }
+export const setMyOwnProfilePageAction = (id) => {
+
+    return async function (dispatch) {
+
+        let responseUsersArr = await usersApi.getUserProfile(id);
+        dispatch({
+            type: 'IS_OWNERS_INFO',
+            payload: {
+                name:responseUsersArr.fullName,
+                photo:responseUsersArr.photos.small
+            }
+        })
+    }
+}
