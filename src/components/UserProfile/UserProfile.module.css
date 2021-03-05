@@ -1,7 +1,6 @@
-
+.UserProfile{
+    margin: 3rem 4rem;
+}
 .userInfo{
     display: flex;
-}
-.userInfo img{
-    width: 50%;
 }

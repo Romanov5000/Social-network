@@ -1,0 +1,9 @@
+.userPage{
+}
+.userPage img{
+    width: 75%;
+    border-radius: 50%;
+}
+.container{
+    display: flex;
+}

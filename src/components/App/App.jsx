@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../Header";
 import UserProfile from "../UserProfile";
 import style from "./App.module.css";
-// import NavBar from "../NavBar";
 import Messages from "../Messages";
 import FindUser from "../FindUser";
 import PrivateRoute from "../HOC/PrivateRoute";

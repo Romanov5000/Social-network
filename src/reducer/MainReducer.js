@@ -85,7 +85,7 @@ export function MainReducer(state = initialState, action) {
             return {
                 ...state,
                 userInfo: {...state.userInfo, photos: action.payload},
-                ownersInfo: {...state.userInfo, photo: action.payload.small}
+                ownersInfo: {...state.ownersInfo, photo: action.payload.small}
             }
         default:
             return state;
