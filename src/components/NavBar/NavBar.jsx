@@ -3,12 +3,13 @@ import style from "./NavBar.module.css";
 import { NavLink } from "react-router-dom";
 import {useSelector} from 'react-redux';
 
+
 export default function NavBar() {
   const ownId = useSelector((state)=>state.initial.id);
   return (
     <section className={style.NavBar}>
       <NavLink to={`/Profile/${ownId}`} activeClassName={style.active}>
-        <li>Profile</li>
+        <li> Profile</li>
       </NavLink>
       <NavLink to="/Messages" activeClassName={style.active}>
         <li>Messages</li>

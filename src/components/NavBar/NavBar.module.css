@@ -1,8 +1,9 @@
 .NavBar li{
-    margin: 0 3rem 1.5rem;
+    margin: 0 2rem 1.5rem 4rem;
     color: #c3abef;
     list-style-type: none;
     transition: 0.7s;
+    font-size: 1.5rem;
 }
 .active li{
     color: #fefeff;

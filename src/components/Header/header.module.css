@@ -1,6 +1,7 @@
 .Header {
   background-color: #8757df;
   width: 20%;
+  height: 100vh;
 }
 .Header img {
   width: 30%;
@@ -8,13 +9,14 @@
 }
 .userBlk {
   display: flex;
-  margin: 0 3rem 2rem;
+  margin: 0 2rem 2rem 4rem;
 }
 .userBlk p {
   width: 50%;
   margin-left: 15px;
   color: #c3abef;
   transition: 0.7s;
+  font-size: 1rem;
 }
 .userBlk :active {
   color: #fefe;
@@ -26,5 +28,5 @@ a {
   text-decoration: none;
 }
 .loginBtn {
-  margin: 1rem 3rem 2rem;
+  margin: 1rem 2rem 2rem 3.6rem;
 }

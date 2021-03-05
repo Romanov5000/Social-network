@@ -6,6 +6,8 @@ import { setMyOwnProfilePageAction } from "../../actions/ProfilePageAction";
 import { NavLink } from "react-router-dom";
 import { deleteUserLogin } from "../../actions/loginAction";
 import NavBar from "../NavBar";
+import Button from '@material-ui/core/Button';
+
 
 const Header = () => {
   const ownersInfo = useSelector((state) => state.ownersInfo);
@@ -19,10 +21,11 @@ const Header = () => {
   }, [isAuth]);
   let checkUser = isAuth ? (
     <div className={style.loginBtn}>
-      <button onClick={() => dispatch(deleteUserLogin())}>logout</button>
+      <Button onClick={() => dispatch(deleteUserLogin())}>logout</Button>
     </div>
-  ) : (
-    <NavLink to="/Login" ><button className={style.loginBtn}>Login</button></NavLink>
+  ) : ( <div className={style.loginBtn}>
+    <NavLink to="/Login" ><Button >Login</Button></NavLink>
+    </div>
   );
   return (
     <header className={style.Header}>
