@@ -58,20 +58,19 @@ const UserPage = React.memo((props) => {
             <UploadButtons putProfilePhotoAction={putProfilePhotoAction} />
           )}
         </div>
-        <div>
-          <p>{fullName}</p>
-          {hereOwner && (
+        <div className={style.userInfo}>
+          <p className={style.userName}>{fullName}</p>
             <UserStatus
               text={userStatusInfo}
               putStatusAction={putStatusAction}
+              hereOwner={hereOwner}
             />
-          )}
+          {SocNetBlock}
         </div>
       </div>
       <div>
         <p>About me: {abtMe}</p>
         <p>Work status: {jobStatus}</p>
-        {SocNetBlock}
       </div>
     </div>
   );

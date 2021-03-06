@@ -1,0 +1,18 @@
+.status{
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+}
+.ownStatus{
+    cursor: pointer;
+}
+.helper{
+    font-size: 0.8rem;
+    margin-left: 4rem;
+    color: #97949c;
+}
+.changeStatus{
+    margin-bottom: 3.4rem;
+}
+.changeStatus input{
+    width: 15rem;
+}
