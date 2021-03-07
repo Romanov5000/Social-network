@@ -24,7 +24,7 @@ export default function UserStatus(props) {
 
   let userStatusForm = !statusForm ? (
     <div onClick={ubdateStatusForm} className={statusStyle}>
-      {userStatusText}{" "}
+      {userStatusText}
       {hereOwner && <span className={style.helper}>click to change</span>}
     </div>
   ) : (
@@ -32,7 +32,7 @@ export default function UserStatus(props) {
       <Input
         onBlur={ubdateStatusForm}
         autoFocus={true}
-        value={userStatusText}
+        value={statusText}
         onChange={ubdateStatusText}
       />
     </form>

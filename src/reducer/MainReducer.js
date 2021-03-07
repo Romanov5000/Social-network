@@ -28,6 +28,14 @@ export function MainReducer(state = initialState, action) {
                 ...state,
                 publications: [action.payload, ...state.publications]
             };
+        case 'IS_DELETE_PUBLICATIONS':
+            return {
+                ...state,
+                publications: state.publications.map(item=>item.id === action.payload ? 
+                    [...state.publications.slice(0, item),
+                        ...state.publications.slice(item + 1) ]
+                    : item)
+            };
         case 'IS_MESSAEGS':
             return {
                 ...state,

@@ -3,6 +3,9 @@ import Spinner from "../../Spinner";
 import UserStatus from "../UserStatus";
 import UploadButtons from "./UploadButtons";
 import style from "./UserPage.module.css";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import WorkOutlineIcon from "@material-ui/icons/WorkOutline";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 
 const UserPage = React.memo((props) => {
   let {
@@ -17,32 +20,46 @@ const UserPage = React.memo((props) => {
     putProfilePhotoAction,
   } = props;
 
-  let avatar =
-    photos && photos.large
-      ? photos.large
-      : "https://cdn.iconscout.com/icon/free/png-512/speak-1659467-1409989.png";
+  const avatar =
+    photos && photos.large ? (
+      <img src={photos.large} alt="userAvatar" />
+    ) : (
+      <img
+        className={style.notUserAvata}
+        src={
+          "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png"
+        }
+        alt="userAvatar"
+      />
+    );
 
-  let abtMe = aboutMe ? aboutMe : "I'm funny";
-  let jobStatus = lookingForAJobDescription ? (
+  const abtMe = aboutMe ? aboutMe : "I'm funny";
+  const jobStatus = lookingForAJobDescription ? (
     lookingForAJobDescription
   ) : (
     <span>looking for a job</span>
   );
-  let SocNetBlock =
+  const notUserStyle = photos && photos.large
+    ? `${style.ownUserStyle}`
+    : `${style.notUserStyle}`;
+  const SocNetBlock =
     contacts && contacts.github ? (
       <div>
-        <a href={contacts.github} target="_blank">
+        <a href={contacts.github} target="_blank" className={style.socLink}>
+          <GitHubIcon />
           Github
         </a>
-        <a href={contacts.website} target="_blank">
+        <a href={contacts.website} target="_blank" className={style.socLink}>
+          <WorkOutlineIcon />
           Portfolio
         </a>
-        <a href={contacts.mainLink} target="_blank">
+        <a href={contacts.mainLink} target="_blank" className={style.socLink}>
+          <LinkedInIcon />
           Linkedin
         </a>
       </div>
     ) : (
-      "User doesn't have social networks"
+      <div className={style.socText}>User doesn't have social networks</div>
     );
 
   if (!fullName) {
@@ -52,23 +69,23 @@ const UserPage = React.memo((props) => {
   return (
     <div className={style.userPage}>
       <div className={style.container}>
-        <div>
-          <img src={avatar} alt="userAvatar" />
+        <div className={notUserStyle}>
+          {avatar}
           {hereOwner && (
             <UploadButtons putProfilePhotoAction={putProfilePhotoAction} />
           )}
         </div>
         <div className={style.userInfo}>
           <p className={style.userName}>{fullName}</p>
-            <UserStatus
-              text={userStatusInfo}
-              putStatusAction={putStatusAction}
-              hereOwner={hereOwner}
-            />
+          <UserStatus
+            text={userStatusInfo}
+            putStatusAction={putStatusAction}
+            hereOwner={hereOwner}
+          />
           {SocNetBlock}
         </div>
       </div>
-      <div>
+      <div className={style.aboutMeInfo}>
         <p>About me: {abtMe}</p>
         <p>Work status: {jobStatus}</p>
       </div>

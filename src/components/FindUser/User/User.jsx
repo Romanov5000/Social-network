@@ -7,7 +7,7 @@ export default function User(props) {
   let followBtn = follow ? "unfollow" : "follow";
   let userPhoto = photos.small
     ? photos.small
-    : "https://idelio.ru/admin/img/man.png";
+    : "https://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-512.png";
 
   return (
     <div key={id} className={style.user}>

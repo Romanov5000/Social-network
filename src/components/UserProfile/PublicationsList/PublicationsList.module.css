@@ -1,0 +1,10 @@
+
+.public{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.public button{
+ margin-right: 4.5rem;
+}

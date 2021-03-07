@@ -1,7 +1,7 @@
 .Header {
   background-color: #8757df;
   width: 20%;
-  height: 100vh;
+  min-height: 100vh;
 }
 .Header img {
   width: 30%;

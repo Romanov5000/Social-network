@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
 
-export default function InputForm (props) {
+export default function InputForm(props) {
   const [newPost, setNewPost] = useState("");
 
   const inputText = (event) => {
@@ -10,15 +12,21 @@ export default function InputForm (props) {
   };
   const onSubmit = (event) => {
     event.preventDefault();
+    props.setPublication(newPost);
     setNewPost((newPost) => "");
   };
 
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input value={newPost} onChange={inputText} />
-        <button onClick={() => props.setPublication(newPost)}>click</button>
+        <Input
+          placeholder="What's new?"
+          value={newPost}
+          onChange={inputText}
+          style={{ width: "33rem" }}
+        />
+        <Button onClick={onSubmit}>click</Button>
       </form>
     </div>
   );
-};
+}
