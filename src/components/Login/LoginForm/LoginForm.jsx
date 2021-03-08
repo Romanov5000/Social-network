@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { postUserLogin } from "../../../actions/loginAction";
 import { useDispatch } from "react-redux";
+import style from "../Login.module.css";
+import Button from '@material-ui/core/Button';
 
 const UserSearchForm = () => {
   const dispatch = useDispatch();
@@ -25,15 +27,26 @@ const UserSearchForm = () => {
       {() => (
         <Form>
           <div>
-            <Field type="login" name="email" />
-            <ErrorMessage name="email" component="div" />
-            <Field type="password" name="password" />
-            <ErrorMessage name="password" component="div" />
-            <Field type="checkbox" name="rememberMe" />
-            Remember me
-            <ErrorMessage name="rememberMe" component="div" />
+            <div className={style.loginForm}>
+              <Field placeholder="Email" type="login" name="email" />
+            </div>
+            <ErrorMessage
+              className={style.loginError}
+              name="email"
+              component="div"
+            />
+            <div className={style.loginForm}>
+              <Field placeholder="Password" type="password" name="password" />
+            </div>
+            <ErrorMessage
+              className={style.loginError}
+              name="password"
+              component="div"
+            />
+            <div className={style.submitLogin}>
+              <Button type="submit">Come in</Button>
+            </div>
           </div>
-          <button type="submit">Submit</button>
         </Form>
       )}
     </Formik>

@@ -1,0 +1,44 @@
+.loginContainer{
+    margin: 3rem 4rem;
+}
+.loginForm {
+    margin-top: 2rem;
+}
+.loginForm input{
+    font: inherit;
+    color: currentColor;
+    width: 100%;
+    border: 0;
+    height: 1.1876em;
+    margin: 0 0 0.5rem;
+    display: block;
+    padding: 1rem 0 0.5rem;
+    min-width: 0;
+    background: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    font-size: 1.2rem;
+    transition: 0.1s;
+}
+
+.loginForm :hover{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+}
+
+.loginForm :focus{
+    transform: 200ms cubic-bezier(0.4,0,0.2,1) 0ms;
+    border-bottom: 2px solid #3f51b5;
+    outline: -webkit-focus-ring-color auto 0px;
+}
+.loginError{
+color: brown;
+position: absolute;
+font-size: 1.1rem;
+}
+.submitLogin{
+    margin-top: 2rem;
+}
+.submitLogin span{
+    font-size: 1.1rem;
+}
+
