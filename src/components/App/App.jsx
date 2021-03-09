@@ -6,6 +6,8 @@ import Messages from "../Messages";
 import FindUser from "../FindUser";
 import PrivateRoute from "../HOC/PrivateRoute";
 import Login from "../Login";
+import News from "../News";
+import Settings from "../Settings";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "../../reducer/MainReducer";
@@ -20,6 +22,8 @@ function App() {
             <PrivateRoute path={`/profile/:id?`} component={UserProfile} />
             <PrivateRoute path={`/messages`} component={Messages} />
             <PrivateRoute path={`/findUser`} component={FindUser} />
+            <Route path="/News" component={News} />
+            <Route path="/Settings" component={Settings} />
             <Route path="" component={Login} />
           </Switch>
         </div>

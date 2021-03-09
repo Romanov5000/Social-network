@@ -17,9 +17,9 @@ export default function NavBar() {
       <NavLink to="/News" activeClassName={style.active}>
         <li>News</li>
       </NavLink>
-      <NavLink to="/Music" activeClassName={style.active}>
+      {/* <NavLink to="/Music" activeClassName={style.active}>
         <li>Music</li>
-      </NavLink>
+      </NavLink> */}
       <NavLink to="/FindUser" activeClassName={style.active}>
         <li>FindUser</li>
       </NavLink>

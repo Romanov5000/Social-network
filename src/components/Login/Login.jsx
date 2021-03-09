@@ -22,7 +22,7 @@ const Login = (props) => {
       </div>
       <div>
         <div className={style.helper}>You can use this login and password to enter the network</div>
-        <div className={style.helperLogin}>LOGIN: rabr663@gmail.com</div>
+        <div className={style.helperLogin}>EMAIL: rabr663@gmail.com</div>
         <div className={style.helperLogin}>PASSWORD: w1934s</div>
       </div>
     </div>

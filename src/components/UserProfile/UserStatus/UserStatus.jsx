@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./UserStatus.module.css";
 import Input from "@material-ui/core/Input";
 

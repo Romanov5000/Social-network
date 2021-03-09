@@ -44,8 +44,8 @@ const FindUser = () => {
   });
 
   return (
-    <div>
-      <ul className={style.findUser}>{usersList}</ul>
+    <div className={style.findUser}>
+      <ul>{usersList}</ul>
       <Paginator onPaginatorPage={setUsersAction} />
     </div>
   );

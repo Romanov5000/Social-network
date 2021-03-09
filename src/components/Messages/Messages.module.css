@@ -1,5 +1,5 @@
 .Messages{
-    width: 80%;
     display: grid;
     grid-template-columns: 2fr 10fr;
+    margin: 3rem 4rem;
 }

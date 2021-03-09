@@ -1,0 +1,6 @@
+.MessageItem {
+  font-size: 1.2rem;
+}
+.MessageItem input {
+  width: 10rem;
+}
