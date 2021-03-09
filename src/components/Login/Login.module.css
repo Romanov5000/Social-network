@@ -1,5 +1,5 @@
 .loginContainer{
-    margin: 3rem 4rem;
+    margin-right: 8rem;
 }
 .loginForm {
     margin-top: 2rem;
@@ -41,4 +41,17 @@ font-size: 1.1rem;
 .submitLogin span{
     font-size: 1.1rem;
 }
-
+.loginFormContainer{
+    display: flex;
+     margin: 3rem 4rem;
+}
+.helper{
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: #97949c;
+}
+.helperLogin{
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #97949c;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./User.module.css";
 import { NavLink } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 export default function User(props) {
   const { name, id, follow, photos, postUserFollow, deleteUserFollow } = props;
@@ -11,12 +12,19 @@ export default function User(props) {
 
   return (
     <div key={id} className={style.user}>
-      <NavLink to={`/Profile/${id}`}>
-        <img src={userPhoto} alt="logo" />
-      </NavLink>
-      <p>{name}</p>
-      <button onClick={ follow? ()=> deleteUserFollow(id) :
-        () => postUserFollow(id)}>{followBtn}</button>
+      <div className={style.userAvatar}>
+        <NavLink to={`/Profile/${id}`}>
+          <img src={userPhoto} alt="logo" />
+        </NavLink>
+      </div>
+      <div className={style.followBlk}>
+        <p>{name}</p>
+        <Button
+          onClick={
+            follow ? () => deleteUserFollow(id) : () => postUserFollow(id)}>
+          {followBtn}
+        </Button>
+      </div>
     </div>
   );
 }
