@@ -19,12 +19,12 @@ function App() {
         <div className={style.container}>
           <Header />
           <Switch>
-            <PrivateRoute path={`/Social-network/profile/:id?`} component={UserProfile} />
-            <PrivateRoute path={`/Social-network/messages`} component={Messages} />
-            <PrivateRoute path={`/Social-network/findUser`} component={FindUser} />
-            <Route path="/Social-network/News" component={News} />
-            <Route path="/Social-network/Settings" component={Settings} />
-            <Route path="/Social-network" component={Login} />
+            <PrivateRoute path={`/profile/:id?`} component={UserProfile} />
+            <PrivateRoute path={`/messages`} component={Messages} />
+            <PrivateRoute path={`/findUser`} component={FindUser} />
+            <Route path="/News" component={News} />
+            <Route path="/Settings" component={Settings} />
+            <Route path="" component={Login} />
           </Switch>
         </div>
       </BrowserRouter>
